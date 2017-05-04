@@ -1,8 +1,8 @@
-INSERT INTO burgers (id, burger_name, devoured)
-VALUES (1, 'BLT', false);
+INSERT INTO burgers (burger_name, devoured)
+VALUES ("BLT", false);
 
-INSERT INTO burgers (id, burger_name, devoured)
-VALUES (2, 'turkey burger', false);
+INSERT INTO burgers (burger_name, devoured)
+VALUES ("turkey burger", false);
 
-INSERT INTO burgers (id, burger_name, devoured)
-VALUES (3, 'double cheese', false);
+INSERT INTO burgers (burger_name, devoured)
+VALUES ("double cheese", false);
