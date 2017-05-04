@@ -4,20 +4,20 @@ var orm = require("../config/orm.js");
 
 var burgerdata = {
     allB: function(callback) {
-        orm.all('burgers', function (res) {
-            callback(res);
+          orm.selectAll("burgers", function(result) {
+            callback(result);
         });
     },
 
     newB: function(vals, callback) {
-        orm.create('burgers',column,values, function (res) {
-            callback(res);        
+        orm.insertOne("burgers", "burger_name", vals, function(result) {
+            callback(result);
         });
     },
 
     devour: function(newInput, pageId, callback) {
-        orm.update('burgers', column, newValue, condition, function (res) {
-            callback(res);
+        orm.updateOne("burgers", "devoured", newInput, "id", pageId, function(result) {
+            callback(result);
         });
     }
 };

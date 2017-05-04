@@ -1,27 +1,33 @@
 var connection = require('../config/connection.js');
 
 var orm = {
-   insertOne: function(tableInput, nameInput, callback) { 
-      var newburger = "INSERT INTO " + tableInput + " (burger_name) VALUES (?)";
-      connection.query(newburger, [nameInput], function(err, result) {
-        if (err) throw err;
-        callback(result);
-      });
+  insertOne: function(tableInput, colName, vals, callback) {
+        var query = "INSERT INTO ?? ( ?? ) VALUES (?)";
+        connection.query(query, [tableInput, colName, vals], function(err, result) {
+            if (err) {
+                throw err;
+            }
+            callback(result);
+        });
     },
-  updateOne: function(tableInput, idInput, callback) {
-      var newburger = "UPDATE " + tableInput + " SET devoured = 1  WHERE burger_name = ?";
-      connection.query(newburger, [idInput], function(err, result) {
-        if (err) throw err;
-        callback(result);
-      });
+  updateOne: function(tableInput, colName, newInput, colId, pageId, callback) {
+        var query = "UPDATE ?? SET ?? = ? WHERE ?? = ?";
+        connection.query(query, [tableInput, colName, newInput, colId, pageId], function(err, result) {
+            if (err) {
+                throw err;
+            }
+            callback(result);
+        });
     },
-  selectAll: function(cb) {
-      var newburger = 'SELECT * FROM burgers';
-      connection.query(newburger, function(err, result) {
-        if (err) throw err;
-        callback(result);
-      });
+  selectAll: function(tableInput, callback) {
+        var query = "SELECT * FROM ??";
+        connection.query(query, [tableInput], function(err, result) {
+            if (err) {
+                throw err;
+            }
+            callback(result);
+        });
     }
-};
+  };
 
 module.exports = orm;

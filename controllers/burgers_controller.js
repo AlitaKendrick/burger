@@ -5,22 +5,22 @@ var burger = require("../models/burger.js");
 
 //main page lists all burgers from db
 router.get('/', function(req, res) {
-  burger.findAllBurgers(function(burger_data) {
+  burger.allB(function(burger_data) {
     res.render('index', {burger_data});
   });
 });
 
 //route to post create and post new burgers 
-router.post('/create', function(req, res) {
-  burger.addBurger(req.body.burger_name, function(result) {
+router.post('/', function(req, res) {
+  burger.newB(req.body.burger_name, function(result) {
     res.redirect('/');
   });
 });
 
 
 //route to move burger to devoured (true)
-router.post('/devour/:burger', function(req, res) {
-  burger.devourBurger(req.params.burger, function(result) {
+router.put('/:burger', function(req, res) {
+  burger.devour(req.params.devoured, req.params.burger_name, function(result) {
     res.redirect('/');
   });
 });

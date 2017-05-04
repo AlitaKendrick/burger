@@ -28,7 +28,5 @@ app.use('/create', routes);
 app.use('/update', routes);
 app.use('/delete', routes);
 
-app.listen(PORT, function() {
-    console.log("Server Operational");
-});
+app.listen(PORT);
 
